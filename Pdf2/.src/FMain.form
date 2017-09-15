@@ -1,0 +1,53 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,157,101)
+  Background = Color.LightForeground
+  Minimized = True
+  Maximized = True
+  Transparent = True
+  { tzoom TextBox
+    MoveScaled(80,1,7,4)
+  }
+  { MenosZoom Button
+    MoveScaled(73,1,4,4)
+    Picture = Picture["icon:/48/zoom-out"]
+    Border = False
+  }
+  { MasZoom Button
+    MoveScaled(90,1,4,4)
+    Background = Color.LightForeground
+    Picture = Picture["icon:/48/zoom-in"]
+    Border = False
+  }
+  { Abrir Button
+    MoveScaled(9,1,11,5)
+    Text = ("Abrir")
+    Picture = Picture["icon:/32/open"]
+    Border = False
+  }
+  { adelante Button
+    MoveScaled(149,71,7,6)
+    Background = Color.Green
+    Picture = Picture["icon:/48/next"]
+    Border = False
+  }
+  { atras Button
+    MoveScaled(10,71,9,6)
+    Background = Color.Green
+    Foreground = Color.Green
+    Picture = Picture["icon:/48/left"]
+    Border = False
+  }
+  { split1 HSplit
+    MoveScaled(20,8,126,90)
+    { scrol ScrollView
+      MoveScaled(2,3,124,68)
+      Background = Color.ButtonBackground
+      NoTabFocus = True
+      { PictureBox1 PictureBox
+        MoveScaled(-6,1,133,72)
+      }
+    }
+  }
+}
