@@ -1,0 +1,73 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,168,101)
+  Background = Color.LightForeground
+  Minimized = True
+  Maximized = True
+  Transparent = True
+  { tzoom TextBox
+    MoveScaled(80,1,7,4)
+  }
+  { MenosZoom Button
+    MoveScaled(73,1,4,4)
+    Picture = Picture["icon:/48/zoom-out"]
+    Border = False
+  }
+  { MasZoom Button
+    MoveScaled(90,1,4,4)
+    Background = Color.LightForeground
+    Picture = Picture["icon:/48/zoom-in"]
+    Border = False
+  }
+  { Abrir Button
+    MoveScaled(9,1,11,5)
+    Text = ("Abrir")
+    Picture = Picture["icon:/32/open"]
+    Border = False
+  }
+  { adelante Button
+    MoveScaled(149,71,7,6)
+    Background = Color.Green
+    Picture = Picture["icon:/48/next"]
+    Border = False
+  }
+  { atras Button
+    MoveScaled(10,70,9,6)
+    Background = Color.Green
+    Foreground = Color.Green
+    Picture = Picture["icon:/48/left"]
+    Border = False
+  }
+  { split1 HSplit
+    MoveScaled(20,8,126,87)
+    { scrol ScrollView
+      MoveScaled(2,3,124,68)
+      Background = Color.ButtonBackground
+      NoTabFocus = True
+      { PictureBox1 PictureBox
+        MoveScaled(-6,1,133,72)
+      }
+    }
+  }
+  { first Button
+    MoveScaled(1,70,8,6)
+    Background = Color.Green
+    Picture = Picture["icon:/48/first"]
+    Border = False
+  }
+  { last Button
+    MoveScaled(157,71,7,6)
+    Picture = Picture["icon:/48/last"]
+    Border = False
+  }
+  { Label1 Label
+    MoveScaled(83,96,14,4)
+  }
+  { Label2 Label
+    MoveScaled(66,96,11,4)
+  }
+  { TextBox1 TextBox
+    MoveScaled(77,96,5,4)
+  }
+}
