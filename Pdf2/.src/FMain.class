@@ -15,6 +15,8 @@ Private hoja_pintura As Picture
 Private totalpag As Integer 
 Private actual As Integer
 Private mostrar_por As Integer
+Private page_start As Integer
+Private page_last As Integer
 
 
 
@@ -24,7 +26,7 @@ Public Sub Form_Open()
 'FMain.w = 2000
 Me.W = Screen.W
 Me.H = Screen.H
-
+page_start = 1
 
 
 End
@@ -37,8 +39,6 @@ Public Sub Abrir_Click()
 
   'Me.Center
 
-
-
   archivo = Dialog.Path
   
 If archivo == Null 
@@ -48,6 +48,7 @@ Else
   pdf.Open(archivo)
 
  totalpag = pdf.Count
+ page_last = totalpag
  
 pdf.Zoom = 1.5
 
@@ -92,8 +93,9 @@ Private Sub leer(pagina As Integer)
      Try pictureBox1.Resize(pdf[pagina].w, pdf[pagina].Height)
    
   
-
-  
+  Label2.Caption = "Pagina"
+  TextBox1.Text = pagina
+  Label1.Caption = " de " & pdf.Count
   
   pdf.Close()
   
@@ -181,38 +183,23 @@ End
 
 
 
-Public Sub PictureBox1_MouseWheel()
+'Public Sub PictureBox1_MouseWheel()
   
-    pdf.Open(archivo)
+    'pdf.Open(archivo)
     
-    Print "mouse.delta" & Mouse.Delta
+   ' Print "mouse.delta" & Mouse.Delta
     
   
-  If Mouse.Delta = -1 Then 
-    zoomless()
+ ' If Mouse.Delta = -1 Then 
+ '   zoomless()
     
- Else
-    zoomba()
+' Else
+   ' zoomba()
     
     
-  Endif
+'  Endif
   
-End
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+'End
 
 
 
@@ -282,9 +269,6 @@ Public Sub MenosZoom_Click()
     Endif
   
 
-  
-
-
 End
 
 
@@ -321,5 +305,34 @@ End
 Public Sub split1_Resize()
 
   
+
+End
+
+Public Sub first_Click()
+
+  pagina = page_start
+  leer(page_start)
+
+End
+
+Public Sub last_Click()
+  
+  pagina = page_last
+  leer(page_last)
+
+End
+
+Public Sub TextBox1_KeyPress()
+  
+  If Key.code = Key.Enter Then 
+    Try pagina = Val(TextBox1.Text)
+    
+    If Error Then
+      TextBox1.Text = pagina
+    Else
+      leer(pagina)
+    Endif
+    
+  Endif 
 
 End

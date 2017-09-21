@@ -1,7 +1,7 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,157,101)
+  MoveScaled(0,0,168,101)
   Background = Color.LightForeground
   Minimized = True
   Maximized = True
@@ -33,14 +33,14 @@
     Border = False
   }
   { atras Button
-    MoveScaled(10,71,9,6)
+    MoveScaled(10,70,9,6)
     Background = Color.Green
     Foreground = Color.Green
     Picture = Picture["icon:/48/left"]
     Border = False
   }
   { split1 HSplit
-    MoveScaled(20,8,126,90)
+    MoveScaled(20,8,126,87)
     { scrol ScrollView
       MoveScaled(2,3,124,68)
       Background = Color.ButtonBackground
@@ -49,5 +49,25 @@
         MoveScaled(-6,1,133,72)
       }
     }
+  }
+  { first Button
+    MoveScaled(1,70,8,6)
+    Background = Color.Green
+    Picture = Picture["icon:/48/first"]
+    Border = False
+  }
+  { last Button
+    MoveScaled(157,71,7,6)
+    Picture = Picture["icon:/48/last"]
+    Border = False
+  }
+  { Label1 Label
+    MoveScaled(83,96,14,4)
+  }
+  { Label2 Label
+    MoveScaled(68,96,11,4)
+  }
+  { TextBox1 TextBox
+    MoveScaled(77,96,5,4)
   }
 }
