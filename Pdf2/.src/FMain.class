@@ -3,18 +3,20 @@
 
 
 Private pdf As New PdfDocument
+
+
 Private archivo As String
 
 Private pagina As Integer
 Private hoja_pintura As Picture
+
+
 
 Private totalpag As Integer 
 Private actual As Integer
 Private mostrar_por As Integer
 Private page_start As Integer
 Private page_last As Integer
-Private hImg As Image
-Private countpage As Integer
 
 
 
@@ -35,26 +37,34 @@ Public Sub Abrir_Click()
   Dialog.Filter = ["*.pdf", "Portable Document Format"]
   If Dialog.OpenFile() Then Return
 
-  Me.Center
+  'Me.Center
 
   archivo = Dialog.Path
   
-  If archivo == Null 
+If archivo == Null 
 
-  Else
+Else
   
   pdf.Open(archivo)
 
-  totalpag = pdf.Count
-  page_last = totalpag
+ totalpag = pdf.Count
+ page_last = totalpag
  
-  pdf.Zoom = 1.5
+pdf.Zoom = 1.5
 
-  mostrar_por = pdf.zoom * 100
 
-  tzoom.Text = "" & mostrar_por & "%"
+
+mostrar_por = pdf.zoom * 100
+
+
+
+tzoom.Text = "" & mostrar_por & "%"
+
+
+
  
-  pagina = 1
+ pagina = 1
+ 
  
  pdf.Close()
 
@@ -71,10 +81,17 @@ End
 
 Private Sub leer(pagina As Integer)
 
+
+
+
+
+
   pdf.Open(archivo)
-  hImg = pdf[pagina].Image
+
+
      Try PictureBox1.Picture = pdf[pagina].Image.Picture
      Try pictureBox1.Resize(pdf[pagina].w, pdf[pagina].Height)
+   
   
   Label2.Caption = "Pagina"
   TextBox1.Text = pagina
@@ -85,12 +102,6 @@ Private Sub leer(pagina As Integer)
 End
 
 
-Private Sub printImage(pagina As Integer)
-  pdf.Open(archivo)
-  hImg = pdf[pagina].Image.Stretch(Printer1.PaperWidth * 3, Printer1.PaperHeight * 2.8)
-  pdf.Close()
-  
-End
 
 
 
@@ -107,10 +118,13 @@ Public Sub MasZoom_Click()
       
        zoomba(pdf)
 
-  pdf.Open(archivo) 
+  
+  pdf.Open(archivo)
+  
   
 
 Print "zoom " & pdf.Zoom
+
 
 
 
@@ -120,6 +134,8 @@ Print "zoom " & pdf.Zoom
       
   Endif
   
+ 
+
 End
 
 
@@ -134,8 +150,10 @@ Public Sub zoomba(p As PdfDocument)
       pdf.zoom = pdf.zoom + 0.1
       
        mostrar_por = pdf.Zoom * 100
+        
+        
+        tzoom.Text = "" & mostrar_por & "%"
       
-        tzoom.Text = "" & mostrar_por & "%"      
       
      ' Print "zoom=" & p.Zoom
       
@@ -153,8 +171,14 @@ Public Sub zoomba(p As PdfDocument)
        
         mostrar_por = pdf.Zoom * 100
         
-        tzoom.Text = "" & mostrar_por & "%" 
+        
+        tzoom.Text = "" & mostrar_por & "%"
+        
+       
   Endif
+  
+
+  
 End
 
 
@@ -185,8 +209,11 @@ Public Sub atras_Click()
     Else
       
       pagina = pagina - 1
+
+  
   If pagina < 1
   
+    
     pagina = 1
     
   Endif
@@ -215,6 +242,9 @@ Public Sub adelante_Click()
      
    
  Endif
+  
+ 
+
 End
 
 Public Sub MenosZoom_Click()
@@ -226,6 +256,10 @@ Public Sub MenosZoom_Click()
         
           pdf.Open(archivo)
 
+
+
+
+
  Try PictureBox1.Picture = pdf[pagina].Image.Picture
     
  Try pictureBox1.Resize(pdf[pagina].w, pdf[pagina].Height)
@@ -233,16 +267,32 @@ Public Sub MenosZoom_Click()
    zoomless(pdf)
         
     Endif
+  
+
 End
 
 
+
+
 Public Sub PictureBox1_MouseDown()
+
+  
+
+
    If archivo = Null Then
     Else
+      
        zoomba(pdf)
+
+  
   pdf.Open(archivo)
+  
+  
 
 Print "zoom " & pdf.Zoom
+
+
+
 
  Try PictureBox1.Picture = pdf[pagina].Image.Picture
     
@@ -252,7 +302,9 @@ Print "zoom " & pdf.Zoom
 
 End
 
-Public Sub split1_Resize()  
+Public Sub split1_Resize()
+
+  
 
 End
 
@@ -282,38 +334,5 @@ Public Sub TextBox1_KeyPress()
     Endif
     
   Endif 
-
-End
-
-Public Sub Printer1_Draw()
- 
-  printImage(countpage)
-  
-  Paint.Brush = Paint.Image(hImg, 0, 0)
-  Paint.Rectangle(0, 0, hImg.Width, hImg.Height)
-  Paint.Fill()
-  countpage = countpage + 1
-End
-Public Sub Printer1_Begin()
-  countpage = 1
-  Printer1.FullPage = True
-  Printer1.Count = totalpag
-  
-End
-
-Public Sub Button1_Click()
-  
-   Me.Enabled = False
-    
-  Inc Application.Busy
-    With Printer1
-   .Configure
-   .Paper = .Letter
-   .Print
- End With
-    Printer1.Print
-  Dec Application.Busy
-  Me.Enabled = True
-  
 
 End
