@@ -1,12 +1,13 @@
 # Gambas Project File 3.0
-# Compiled with Gambas 3.9.90
+# Compiled with Gambas 3.10.0
 Title=Pdf2
 Startup=FMain
-Version=0.0.1
+Version=1.1.2
 Component=gb.image
 Component=gb.gui
 Component=gb.form
 Component=gb.pdf
+Authors="Luis Felipe Dubon Obando\nCesar Emilio Casasola Miranda\nBrian"
 TabSize=2
 Language=en_US
 Packager=1
