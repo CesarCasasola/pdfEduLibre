@@ -40,7 +40,7 @@
     Border = False
   }
   { split1 HSplit
-    MoveScaled(20,8,126,87)
+    MoveScaled(20,8,126,79)
     { scrol ScrollView
       MoveScaled(2,3,124,68)
       Background = Color.ButtonBackground
@@ -62,12 +62,22 @@
     Border = False
   }
   { Label1 Label
-    MoveScaled(83,96,14,4)
+    MoveScaled(83,87,14,4)
   }
   { Label2 Label
-    MoveScaled(68,96,11,4)
+    MoveScaled(68,87,11,4)
   }
   { TextBox1 TextBox
-    MoveScaled(77,96,5,4)
+    MoveScaled(77,87,5,4)
+  }
+  { Printer1 #Printer
+    #MoveScaled(29,0)
+    Paper = Printer.Letter
+    FullPage = True
+  }
+  { Button1 Button
+    MoveScaled(21,1,6,4)
+    Picture = Picture["icon:/32/printer"]
+    Border = False
   }
 }
