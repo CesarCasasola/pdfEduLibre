@@ -1,0 +1,309 @@
+' Gambas class file
+
+Private pdf As New PdfDocument
+Private archivo As String
+
+Private pagina As Integer
+Private hoja_pintura As Picture
+
+Private totalpag As Integer 
+Private actual As Integer
+Private mostrar_por As Integer
+Private page_start As Integer
+Private page_last As Integer
+Private hImg As Image
+Private countpage As Integer
+
+Public Sub Form_Open()
+
+
+Me.W = Screen.W
+Me.H = Screen.H
+page_start = 1
+
+
+End
+
+
+Public Sub Abrir_Click()
+
+  Dialog.Title = "Elige el PDF que deseas ver"
+  Dialog.Filter = ["*.pdf", "Portable Document Format"]
+  If Dialog.OpenFile() Then Return
+
+  Me.Center
+
+  archivo = Dialog.Path
+  
+  If archivo == Null 
+
+  Else
+  
+  pdf.Open(archivo)
+
+  totalpag = pdf.Count
+  page_last = totalpag
+ 
+  pdf.Zoom = 1.5
+
+  mostrar_por = pdf.zoom * 100
+
+  tzoom.Text = "" & mostrar_por & "%"
+ 
+  pagina = 1
+ 
+ pdf.Close()
+
+ leer(pagina)
+  
+
+Endif
+End
+
+Private Sub leer(pagina As Integer)
+
+  pdf.Open(archivo)
+  hImg = pdf[pagina].Image
+     Try PictureBox1.Picture = pdf[pagina].Image.Picture
+     Try pictureBox1.Resize(pdf[pagina].w, pdf[pagina].Height)
+  
+  Label2.Caption = "Pagina"
+  TextBox1.Text = pagina
+  Label1.Caption = " de " & pdf.Count
+  
+  pdf.Close()
+  
+End
+
+Private Sub printImage(pagina As Integer)
+  pdf.Open(archivo)
+  hImg = pdf[pagina].Image.Stretch(Printer1.PaperWidth * 3, Printer1.PaperHeight * 2.8)
+  pdf.Close()
+  
+End
+
+
+
+
+
+
+
+
+Public Sub MasZoom_Click()
+
+  
+  If archivo = Null Then
+    Else
+      
+       zoomba(pdf)
+
+  pdf.Open(archivo) 
+  
+
+Print "zoom " & pdf.Zoom
+
+
+
+ Try PictureBox1.Picture = pdf[pagina].Image.Picture
+    
+ Try pictureBox1.Resize(pdf[pagina].w, pdf[pagina].Height)
+      
+  Endif
+  
+End
+
+
+
+
+
+
+Public Sub zoomba(p As PdfDocument)
+  
+  If p.zoom > 3 Then
+   Else
+      pdf.zoom = pdf.zoom + 0.1
+      
+       mostrar_por = pdf.Zoom * 100
+      
+        tzoom.Text = "" & mostrar_por & "%"      
+      
+     ' Print "zoom=" & p.Zoom
+      
+      
+  Endif
+  
+  End
+  
+  
+  Public Sub zoomless(p As PdfDocument)
+  
+  If p.zoom < 1 Then
+     Else
+       pdf.Zoom = pdf.Zoom - 0.1
+       
+        mostrar_por = pdf.Zoom * 100
+        
+        tzoom.Text = "" & mostrar_por & "%" 
+  Endif
+End
+
+
+
+'Public Sub PictureBox1_MouseWheel()
+  
+    'pdf.Open(archivo)
+    
+   ' Print "mouse.delta" & Mouse.Delta
+    
+  
+ ' If Mouse.Delta = -1 Then 
+ '   zoomless()
+    
+' Else
+   ' zoomba()
+    
+    
+'  Endif
+  
+'End
+
+
+
+Public Sub atras_Click()
+
+  If archivo == Null Then
+    Else
+      
+      pagina = pagina - 1
+  If pagina < 1
+  
+    pagina = 1
+    
+  Endif
+  
+  leer(pagina) 
+      
+  Endif
+   
+
+End
+
+Public Sub adelante_Click()
+
+ If archivo == Null Then
+   Else
+     
+      pagina = pagina + 1
+
+  If pagina > totalpag
+  
+    pagina = totalpag
+    
+    Endif
+    
+        leer(pagina)
+     
+   
+ Endif
+End
+
+Public Sub MenosZoom_Click()
+
+    
+    If archivo == Null Then 
+      
+      Else
+        
+          pdf.Open(archivo)
+
+ Try PictureBox1.Picture = pdf[pagina].Image.Picture
+    
+ Try pictureBox1.Resize(pdf[pagina].w, pdf[pagina].Height)
+ 
+   zoomless(pdf)
+        
+    Endif
+End
+
+
+Public Sub PictureBox1_MouseDown()
+   If archivo = Null Then
+    Else
+       zoomba(pdf)
+  pdf.Open(archivo)
+
+Print "zoom " & pdf.Zoom
+
+ Try PictureBox1.Picture = pdf[pagina].Image.Picture
+    
+ Try pictureBox1.Resize(pdf[pagina].w, pdf[pagina].Height)
+      
+  Endif
+
+End
+
+Public Sub split1_Resize()  
+
+End
+
+Public Sub first_Click()
+
+  pagina = page_start
+  leer(page_start)
+
+End
+
+Public Sub last_Click()
+  
+  pagina = page_last
+  leer(page_last)
+
+End
+
+Public Sub TextBox1_KeyPress()
+  
+  If Key.code = Key.Enter Then 
+    Try pagina = Val(TextBox1.Text)
+    
+    If Error Then
+      TextBox1.Text = pagina
+    Else
+      leer(pagina)
+    Endif
+    
+  Endif 
+
+End
+
+Public Sub Printer1_Draw()
+ 
+  printImage(countpage)
+  
+  Paint.Brush = Paint.Image(hImg, 0, 0)
+  Paint.Rectangle(0, 0, hImg.Width, hImg.Height)
+  Paint.Fill()
+  countpage = countpage + 1
+End
+Public Sub Printer1_Begin()
+  countpage = 1
+  Printer1.FullPage = True
+  Printer1.Count = totalpag
+  
+End
+
+Public Sub Button1_Click()
+  
+   Me.Enabled = False
+    
+  Inc Application.Busy
+    With Printer1
+   .Configure
+   .Paper = .Letter
+   .Print
+ End With
+    Printer1.Print
+  Dec Application.Busy
+  Me.Enabled = True
+  
+
+End

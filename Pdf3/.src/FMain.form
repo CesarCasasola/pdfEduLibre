@@ -1,0 +1,135 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,127,91)
+  Arrangement = Arrange.Vertical
+  { HBox1 HBox
+    MoveScaled(1,2,124,5)
+    { Abrir Button
+      MoveScaled(2,0,11,5)
+      ToolTip = ("Abrir PDF")
+      Text = ("Abrir")
+      Picture = Picture["icon:/32/open"]
+    }
+    { Button1 Button
+      MoveScaled(14,0,6,5)
+      ToolTip = ("Imprimir archivo")
+      Picture = Picture["icon:/32/print"]
+    }
+    { HBox4 HBox
+      MoveScaled(26,-10,5,24)
+    }
+    { Label2 Label
+      MoveScaled(42,1,6,3)
+    }
+    { TextBox1 TextBox
+      MoveScaled(48,0,10,5)
+    }
+    { Label1 Label
+      MoveScaled(59,1,12,3)
+    }
+    { HBox8 HBox
+      MoveScaled(72,-9,11,24)
+    }
+    { MenosZoom Button
+      MoveScaled(85,1,4,4)
+      ToolTip = ("Disminuir zoom")
+      Picture = Picture["icon:/32/zoom-out"]
+    }
+    { tzoom TextBox
+      MoveScaled(91,1,10,4)
+    }
+    { MasZoom Button
+      MoveScaled(103,1,4,4)
+      ToolTip = ("Aumentar zoom")
+      Picture = Picture["icon:/32/zoom-in"]
+    }
+    { HBox5 HBox
+      MoveScaled(108,-9,15,24)
+      Expand = True
+    }
+    { Printer1 #Printer
+      #MoveScaled(20,0)
+    }
+  }
+  { HBox2 HBox
+    MoveScaled(1,9,124,78)
+    Expand = True
+    { VBox1 VBox
+      MoveScaled(1,1,8,76)
+      { VBox3 VBox
+        MoveScaled(1,1,6,28)
+        Expand = True
+      }
+      { first Button
+        MoveScaled(1,30,6,8)
+        ToolTip = ("Primera página")
+        Picture = Picture["icon:/32/first"]
+      }
+      { VBox4 VBox
+        MoveScaled(1,39,6,29)
+        Expand = True
+      }
+    }
+    { VBox5 VBox
+      MoveScaled(10,1,8,76)
+      { VBox7 VBox
+        MoveScaled(1,1,6,28)
+        Expand = True
+      }
+      { atras Button
+        MoveScaled(1,30,6,8)
+        ToolTip = ("Atrás")
+        Picture = Picture["icon:/32/left"]
+      }
+      { VBox6 VBox
+        MoveScaled(1,39,6,29)
+        Expand = True
+      }
+    }
+    { VBox13 VBox
+      MoveScaled(19,1,84,76)
+      Expand = True
+      { scroll ScrollView
+        MoveScaled(1,1,82,73)
+        Expand = True
+        { PictureBox1 PictureBox
+          MoveScaled(1,1,80,70)
+          Expand = True
+        }
+      }
+    }
+    { VBox10 VBox
+      MoveScaled(104,1,9,76)
+      { VBox11 VBox
+        MoveScaled(1,1,7,27)
+        Expand = True
+      }
+      { adelante Button
+        MoveScaled(1,29,7,8)
+        ToolTip = ("Adelante")
+        Picture = Picture["icon:/32/next"]
+      }
+      { VBox12 VBox
+        MoveScaled(1,38,7,30)
+        Expand = True
+      }
+    }
+    { VBox2 VBox
+      MoveScaled(114,1,9,76)
+      { VBox8 VBox
+        MoveScaled(1,1,7,27)
+        Expand = True
+      }
+      { last Button
+        MoveScaled(1,29,7,8)
+        ToolTip = ("Última página")
+        Picture = Picture["icon:/32/last"]
+      }
+      { VBox9 VBox
+        MoveScaled(1,38,7,30)
+        Expand = True
+      }
+    }
+  }
+}
