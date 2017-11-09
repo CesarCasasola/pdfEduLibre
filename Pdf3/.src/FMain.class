@@ -21,6 +21,14 @@ Me.W = Screen.W
 Me.H = Screen.H
 page_start = 1
 Button1.Enabled = False
+MenosZoom.Enabled = False
+MasZoom.Enabled = False
+TextBox1.Enabled = False
+atras.Visible = False
+lastP.Visible = False
+first.Visible = False
+adelante.Visible = False
+  
 
 End
 
@@ -57,6 +65,14 @@ Public Sub Abrir_Click()
  leer(pagina)
   
   Button1.Enabled = True
+  MenosZoom.Enabled = True
+  MasZoom.Enabled = True
+  TextBox1.Enabled = True
+  atras.Visible = True
+  lastP.Visible = True
+  first.Visible = True
+  adelante.Visible = True
+  
 Endif
 End
 
@@ -149,24 +165,6 @@ End
 
 
 
-'Public Sub PictureBox1_MouseWheel()
-  
-    'pdf.Open(archivo)
-    
-   ' Print "mouse.delta" & Mouse.Delta
-    
-  
- ' If Mouse.Delta = -1 Then 
- '   zoomless()
-    
-' Else
-   ' zoomba()
-    
-    
-'  Endif
-  
-'End
-
 
 
 Public Sub atras_Click()
@@ -253,7 +251,7 @@ Public Sub first_Click()
 
 End
 
-Public Sub last_Click()
+Public Sub lastP_Click()
   
   pagina = page_last
   leer(page_last)
