@@ -1,0 +1,9 @@
+' Gambas class file
+
+
+
+Public Sub Form_Open()
+
+  lblVersion.Text = Application.Version
+
+End

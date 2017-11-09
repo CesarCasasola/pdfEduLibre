@@ -20,7 +20,7 @@ Public Sub Form_Open()
 Me.W = Screen.W
 Me.H = Screen.H
 page_start = 1
-
+Button1.Enabled = False
 
 End
 
@@ -56,7 +56,7 @@ Public Sub Abrir_Click()
 
  leer(pagina)
   
-
+  Button1.Enabled = True
 Endif
 End
 
@@ -268,7 +268,11 @@ Public Sub TextBox1_KeyPress()
     If Error Then
       TextBox1.Text = pagina
     Else
+      If Val(TextBox1.Text) > totalpag Then
+        TextBox1.Text = pagina
+      Else
       leer(pagina)
+      Endif
     Endif
     
   Endif 
@@ -301,9 +305,16 @@ Public Sub Button1_Click()
    .Paper = .Letter
    .Print
  End With
-    Printer1.Print
   Dec Application.Busy
   Me.Enabled = True
   
+
+End
+
+
+
+Public Sub Button3_Click()
+
+  Fabout.ShowModal
 
 End

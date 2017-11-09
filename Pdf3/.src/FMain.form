@@ -4,20 +4,24 @@
   MoveScaled(0,0,127,91)
   Arrangement = Arrange.Vertical
   { HBox1 HBox
-    MoveScaled(1,2,124,5)
+    MoveScaled(2,2,124,5)
     { Abrir Button
-      MoveScaled(2,0,11,5)
+      MoveScaled(1,0,12,5)
       ToolTip = ("Abrir PDF")
       Text = ("Abrir")
-      Picture = Picture["icon:/32/open"]
+      Picture = Picture["img/pdfmiu.png"]
     }
     { Button1 Button
       MoveScaled(14,0,6,5)
       ToolTip = ("Imprimir archivo")
-      Picture = Picture["icon:/32/print"]
+      Picture = Picture["img/printmgr.ico"]
+    }
+    { Button3 Button
+      MoveScaled(27,0,5,5)
+      Picture = Picture["img/hp_pending.ico"]
     }
     { HBox4 HBox
-      MoveScaled(26,-10,5,24)
+      MoveScaled(33,-5,5,24)
     }
     { Label2 Label
       MoveScaled(42,1,6,3)
@@ -34,7 +38,7 @@
     { MenosZoom Button
       MoveScaled(85,1,4,4)
       ToolTip = ("Disminuir zoom")
-      Picture = Picture["icon:/32/zoom-out"]
+      Picture = Picture["img/zoom (copia).png"]
     }
     { tzoom TextBox
       MoveScaled(91,1,10,4)
@@ -42,7 +46,7 @@
     { MasZoom Button
       MoveScaled(103,1,4,4)
       ToolTip = ("Aumentar zoom")
-      Picture = Picture["icon:/32/zoom-in"]
+      Picture = Picture["img/zoom.png"]
     }
     { HBox5 HBox
       MoveScaled(108,-9,15,24)
@@ -80,7 +84,7 @@
       { atras Button
         MoveScaled(1,30,6,8)
         ToolTip = ("Atrás")
-        Picture = Picture["icon:/32/left"]
+        Picture = Picture["icon:/32/previous"]
       }
       { VBox6 VBox
         MoveScaled(1,39,6,29)
